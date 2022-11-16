@@ -1,0 +1,63 @@
+{
+  "compilerOptions": {
+    // ts转js的目标代码版本，esnext是最新版本。
+    // 但如果你用了babel来打包，那这个选项就没用了，babel是看browserslistrc
+    "target": "esnext",
+
+    // 目标代码需要使用的模块化方案，umd指支持所有。
+    // 但跟上面一样，babel会做，这个选项没用。
+    "module": "esnext",
+
+    // 严格模式的检查
+    "strict": true,
+
+    // 对jsx进行怎么样的处理。preserve 保留，即不转化
+    // babel也tm会做
+    "jsx": "preserve",
+
+    // 按照node的方式来解析模块
+    "moduleResolution": "node",
+
+    // ???
+    "experimentalDecorators": true,
+
+    // 跳过一些库的类型检测,一般是 true，因为不同库可能会有命名冲突
+    "skipLibCheck": true,
+
+    // es module 和 commonjs 能不能一起使用
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    // ???
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+
+    // 要不要生成映射文件(ts->js)
+    "sourceMap": true,
+
+    // 文件路径在解析时基本的url，"."就是当前文件
+    "baseUrl": ".",
+
+    // 指定具体要解析的类型，一般就用这个默认的就行
+    "types": ["webpack-env"],
+
+    // 路径解析设置。比如你写 @/components 会被解析成 src/components,后面的*就是要接的东西
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    // 可以指定在项目中可以使用那些库的类型
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+
+  // 有哪些文件是要被解析的
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
+  ],
+
+  // 有哪些文件是不要被解析的。
+  // 如果没有写这个node_moules，有哪个文件引用了以下axios，那就会把axios全部都解析一遍
+  "exclude": ["node_modules"]
+}
