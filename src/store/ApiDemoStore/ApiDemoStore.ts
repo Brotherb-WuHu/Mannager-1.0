@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
-import { storeKey } from 'vuex'
-import { getProducts, IProduct } from '../api/shop'
+import { getProducts, IProduct } from '@/api/shop'
 
 export const useMainStore = defineStore('main', {
   state: () => ({
@@ -13,6 +12,7 @@ export const useShopStore = defineStore('shopStore', {
   state: () => ({
     Products: [] as IProduct[] // 注意类型的写法
   }),
+
   actions: {
     // 注意也是异步的写法
     async loadShopStore() {

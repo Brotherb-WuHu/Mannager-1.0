@@ -1,5 +1,5 @@
 export const rules = {
-  // 注意：这个name和psw的名字要和实际表单绑定的 prop 一样，因为它就是根据这个来匹配规则的
+  // 注意：这个name和password的名字要和实际表单绑定的 prop 一样，因为它就是根据这个来匹配规则的
   name: [
     {
       required: true,
@@ -12,7 +12,7 @@ export const rules = {
       trigger: 'blur'
     }
   ],
-  psw: [
+  password: [
     {
       required: true,
       message: '密码为空',

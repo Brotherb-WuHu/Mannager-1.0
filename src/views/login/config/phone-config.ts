@@ -6,9 +6,9 @@ export const rules = {
       trigger: 'blur'
     },
     {
-      pattern: /^[]{10,11}$/,
-      message: '手机号必须是10-11个数字',
-      trigger: 'blur'
+      // pattern: /^[]{1,10}$/,
+      // message: '手机号必须是1-11个数字',
+      // trigger: 'blur'
     }
   ],
   checkCode: [

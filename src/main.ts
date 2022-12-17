@@ -8,12 +8,12 @@ import './assets/css/index.less'
 // pinia
 import { createPinia } from 'pinia'
 const pinia = createPinia()
+import { setupStore } from '@/store/login/login'
 
 // 网络请求demo
-import brRequest from './service/index'
-import { DataType } from './service/request/type'
-
 createApp(App).use(pinia).use(router).mount('#app')
+
+setupStore()
 
 // brRequest
 //   .request<DataType>({
@@ -35,14 +35,3 @@ createApp(App).use(pinia).use(router).mount('#app')
 //     console.log(res.status)
 //     console.log(res.statusText)
 //   })
-
-import axios from 'axios'
-
-axios
-  .request({
-    url: 'http://localhost:8085/test.json',
-    method: 'get'
-  })
-  .then((res) => {
-    console.log(res.data)
-  })
