@@ -14,11 +14,25 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/main',
-    component: () => import('@/views/main/main.vue')
-  },
-  {
-    path: '/demo',
-    component: () => import('@/views/Demo/index.vue')
+    component: () => import('@/views/main/main.vue'),
+    children: [
+      {
+        path: '/page1',
+        component: () => import('@/views/Demo/page1.vue')
+      },
+      {
+        path: '/page2',
+        component: () => import('@/views/Demo/page2.vue')
+      },
+      {
+        path: '/page3',
+        component: () => import('@/views/Demo/page3.vue')
+      },
+      {
+        path: '/page4',
+        component: () => import('@/views/Demo/page4.vue')
+      }
+    ]
   }
 ]
 

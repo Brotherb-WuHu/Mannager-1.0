@@ -1,10 +1,14 @@
 <template>
   <div class="main">
     <el-container class="main-content">
-      <el-aside width="210px"> </el-aside>
+      <el-aside width="210px">
+        <nav-menu />
+      </el-aside>
       <el-container class="page">
         <el-header class="page-header">Header</el-header>
-        <el-main class="page-content">Main</el-main>
+        <el-main class="page-content">
+          <router-view></router-view>
+        </el-main>
         <el-footer class="page-footer">Footer</el-footer>
       </el-container>
     </el-container>
@@ -14,12 +18,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-// import NavMenu from '@/components/nav-menu'
+import NavMenu from '@/components/nav-menu'
 
 export default defineComponent({
   name: 'App',
   components: {
-    // NavMenu
+    NavMenu
   }
 })
 </script>
