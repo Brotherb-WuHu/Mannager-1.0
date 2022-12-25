@@ -65,7 +65,7 @@ export const useLoginStore = defineStore('loginStore', {
         this.userInfo = userInfo
       }
 
-      const userMenus = localCache.getCache('userInfo')
+      const userMenus = localCache.getCache('userMenus')
       if (userMenus) {
         this.userMenus = userMenus
       }

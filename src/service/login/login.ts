@@ -24,7 +24,7 @@ export function requestUserInfoById(id: number) {
 }
 
 export function requestUserMenusByRoleId(id: number) {
-  // Manus 的就不写了，偷懒
+  // Manus 的类型就不写了，偷懒
   return brRequest.get<IDataType<any>>({
     url: LoginAPI.UserMenus + id + '/menu'
   })
