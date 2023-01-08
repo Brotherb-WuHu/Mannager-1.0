@@ -57,7 +57,7 @@ class BrRequest {
         if (data.returnCode === '-1001') {
           console.log('请求失败,HttpErrorCode:-1001')
         } else {
-          return res
+          return data
         }
       },
       (err) => {
@@ -75,8 +75,8 @@ class BrRequest {
 
     // 2.如果有自定义的拦截器，就使用它
     this.instance.interceptors.request.use(
-      this.interceptors?.rquestInterceptor,
-      this.interceptors?.rquestInterceptorCatch
+      this.interceptors?.requestInterceptor,
+      this.interceptors?.requestInterceptorCatch
     )
     this.instance.interceptors.response.use(
       this.interceptors?.responseInterceptor,
@@ -87,10 +87,10 @@ class BrRequest {
   /* 通用请求方法 */
   request<T>(config: BrRequestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
-      /* 调用axios实例的 request 之前 */
+      /* 调用 axios 实例的 request 之前 */
       // 1.如果有自定义的请求拦截器，就使用
-      if (config.interceptors?.rquestInterceptor) {
-        config = config.interceptors.rquestInterceptor(config)
+      if (config.interceptors?.requestInterceptor) {
+        config = config.interceptors.requestInterceptor(config)
       }
       // 2.判断是否需要显示 loading
       if (config.showLoading === true) {

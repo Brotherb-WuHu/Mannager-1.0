@@ -1,8 +1,12 @@
 <template>
   <div class="login-panel">
     <h2 class="title">后台管理系统</h2>
-    <el-tabs type="border-card" stretch class="demo-tabs">
-      <el-tab-pane>
+    <!-- 如何判断用户选的是account 还是 phone 登录呢？ -->
+    <!-- 要用el-tab自带属性 name 和 v-model 了 -->
+    <!-- name 绑定不同 tab 对应的值，v-model 把 name 对应的东西绑定到 el-tab即 选中哪个-->
+
+    <el-tabs type="border-card" stretch class="demo-tabs" v-model="currentTab">
+      <el-tab-pane name="account">
         <template #label>
           <span class="custom-tabs-label">
             <el-icon><calendar /></el-icon>
@@ -11,8 +15,15 @@
         </template>
         <login-account ref="accountRef" />
       </el-tab-pane>
-      <el-tab-pane label="手机登录">
-        <login-phone />
+      <el-tab-pane name="phone">
+        <template #label>
+          <span class="custom-tabs-label">
+            <el-icon><Cellphone /></el-icon>
+            <span>手机登录</span>
+          </span>
+        </template>
+
+        <login-phone ref="phoneRef" />
       </el-tab-pane>
     </el-tabs>
 
@@ -30,7 +41,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { Calendar } from '@element-plus/icons-vue'
+import { Calendar, Cellphone } from '@element-plus/icons-vue'
 import LoginAccount from './login-account.vue'
 import LoginPhone from './login-phone.vue'
 
@@ -46,15 +57,26 @@ export default defineComponent({
 
     // 常见技巧:不想写any，但是要获取组件对象的类型
     const accountRef = ref<InstanceType<typeof LoginAccount>>()
+    const phoneRef = ref<InstanceType<typeof LoginPhone>>()
+
+    // 定义选中 account 或者 phone 的变量.我们默认选中 account
+    const currentTab = ref('account')
 
     const handleLoginClick = () => {
-      console.log('立即登录', accountRef.value)
-      accountRef.value?.loginAction(isKeepPsw.value)
+      if (currentTab.value === 'account') {
+        console.log('登录account', accountRef.value)
+        accountRef.value?.loginAction(isKeepPsw.value)
+      } else {
+        console.log('登录phone', phoneRef.value)
+        phoneRef.value?.loginAction(isKeepPsw.value)
+      }
     }
 
     return {
       isKeepPsw,
       handleLoginClick,
+      currentTab,
+      phoneRef,
       accountRef
     }
   }
