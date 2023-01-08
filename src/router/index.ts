@@ -10,29 +10,20 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/login',
+    name: 'login',
     component: () => import('@/views/login/index.vue')
   },
   {
     path: '/main',
+    name: 'main',
     component: () => import('@/views/main/main.vue'),
-    children: [
-      {
-        path: '/page1',
-        component: () => import('@/views/Demo/page1.vue')
-      },
-      {
-        path: '/page2',
-        component: () => import('@/views/Demo/page2.vue')
-      },
-      {
-        path: '/page3',
-        component: () => import('@/views/Demo/page3.vue')
-      },
-      {
-        path: '/page4',
-        component: () => import('@/views/Demo/page4.vue')
-      }
-    ]
+    children: []
+  },
+  // 404 页面
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'not-found',
+    component: () => import('@/views/not-found/not-found.vue')
   }
 ]
 
