@@ -70,7 +70,7 @@ export default defineComponent({
     const handleMenuItemClick = (item: any) => {
       console.log(item.url)
       router.push({
-        path: item.url ?? '/'
+        path: item.url ?? '/not-found'
       })
     }
     console.log(userMenus)
