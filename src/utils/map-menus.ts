@@ -13,13 +13,12 @@ export function mapMenusToRoutes(userMenus: any[]): RouteRecordRaw[] {
   // 参数1：目录，参数2：是否遍历子目录，参数3：匹配文件
   const routeFiles = require.context('../router/main', true, /\.ts/)
   routeFiles.keys().forEach((key) => {
-    // console.log(key) eg:./analysis/analysis.ts
+    // console.log(key) eg:./ analysis / analysis.ts
     const route = require('../router/main' + key.split('.')[1])
     // console.log(route.default)
     allRoutes.push(route.default)
-    // console.log(allRoutes)
   })
-
+  console.log(allRoutes)
   // 2.根据菜单获取的需要添加routes
   // 分析userMenus,不能直接取url，要用递归判断有无子菜单
   // type === 1 -> children -> type ===1 -> chidren ....
