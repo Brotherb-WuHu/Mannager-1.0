@@ -5,7 +5,7 @@
       <span v-if="!collapse" class="title">Vue3+TS</span>
     </div>
 
-    <el-menu default-active="1" :collapse="collapse" class="el-menu-vertical">
+    <el-menu default-active="39" :collapse="collapse" class="el-menu-vertical">
       <template v-for="item in userMenus" :key="item.id">
         <!-- 二级菜单 (type = 1 则还有可以展开的菜单) -->
         <template v-if="item.type === 1">
@@ -20,7 +20,10 @@
 
             <!-- 遍历里面的item -->
             <template v-for="subitem in item.children" :key="subitem.id">
-              <el-menu-item :index="subitem.id + ''">
+              <el-menu-item
+                :index="subitem.id + ''"
+                @click="handleMenuItemClick(subitem)"
+              >
                 <i v-if="subitem.icon" :class="subitem.icon"></i>
                 <span>{{ subitem.name }}</span>
               </el-menu-item>
@@ -44,6 +47,7 @@
 import { defineComponent } from 'vue'
 import { useLoginStore } from '@/store/login/login'
 import { storeToRefs } from 'pinia'
+import router from '@/router'
 
 export default defineComponent({
   props: {
@@ -63,9 +67,16 @@ export default defineComponent({
   setup() {
     const userMenus = storeToRefs(useLoginStore()).userMenus.value
 
-    console.log(userMenus)
+    const handleMenuItemClick = (item: any) => {
+      console.log(item.url)
+      router.push({
+        // path: item.url ?? '/not-found'
+        path: item.url ?? '/'
+      })
+    }
+    // console.log(userMenus)
 
-    return { userMenus }
+    return { userMenus, handleMenuItemClick }
   }
 })
 </script>

@@ -1,4 +1,4 @@
-import brRequest from '../index'
+import { brRequest } from '../index'
 import { IAccount } from '../../views/login/config/types'
 import { IDataType, ILoginResult, UserInfo } from './types'
 
