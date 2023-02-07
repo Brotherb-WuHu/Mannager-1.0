@@ -16,6 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+
 import board from './cpns/board/board.vue'
 import content from './cpns/content/content.vue'
 import sideBar from './cpns/side-bar/side-bar.vue'
@@ -28,6 +29,8 @@ export default defineComponent({
     sideBar
   },
   setup() {
+    // 加载对比结果
+
     return {}
   }
 })
@@ -39,20 +42,20 @@ export default defineComponent({
 }
 
 .overview {
-  background-color: red;
+  // background-color: red;
 
   .content {
     width: 60%;
-    background-color: aquamarine;
+    // background-color: aquamarine;
   }
 
   .board {
     width: 30%;
-    background-color: lightsteelblue;
+    // background-color: lightsteelblue;
   }
 
   .sideBar {
-    background-color: lightgreen;
+    // background-color: lightgreen;
   }
 }
 </style>
