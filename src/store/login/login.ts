@@ -7,6 +7,7 @@ import {
 import { IAccount, IPhone } from '@/views/login/config/types'
 import localCache from '@/utils/cache'
 import router from '@/router'
+import { mapMenusToRoutes } from '@/utils/map-menus'
 
 export const useLoginStore = defineStore('loginStore', {
   state: () => ({
@@ -65,9 +66,21 @@ export const useLoginStore = defineStore('loginStore', {
         this.userInfo = userInfo
       }
 
-      const userMenus = localCache.getCache('userInfo')
+      const userMenus = localCache.getCache('userMenus')
       if (userMenus) {
         this.userMenus = userMenus
+
+        let route = router.currentRoute.value.path
+
+        // 动态添加路由
+        const routes = mapMenusToRoutes(userMenus)
+        // console.log('routes', routes)
+        // 将筛选过的，与菜单匹配的路由，添加到 main 路由下
+        routes.forEach((route) => {
+          router.addRoute('main', route)
+        })
+
+        router.push(route)
       }
     }
   }
