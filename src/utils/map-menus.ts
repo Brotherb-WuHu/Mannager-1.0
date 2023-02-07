@@ -18,7 +18,7 @@ export function mapMenusToRoutes(userMenus: any[]): RouteRecordRaw[] {
     // console.log(route.default)
     allRoutes.push(route.default)
   })
-  console.log(allRoutes)
+  // console.log(allRoutes)s
   // 2.根据菜单获取的需要添加routes
   // 分析userMenus,不能直接取url，要用递归判断有无子菜单
   // type === 1 -> children -> type ===1 -> chidren ....

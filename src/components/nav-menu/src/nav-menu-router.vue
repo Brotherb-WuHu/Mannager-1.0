@@ -74,7 +74,7 @@ export default defineComponent({
         path: item.url ?? '/'
       })
     }
-    console.log(userMenus)
+    // console.log(userMenus)
 
     return { userMenus, handleMenuItemClick }
   }
