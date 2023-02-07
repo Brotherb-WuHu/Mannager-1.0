@@ -5,7 +5,7 @@
       <span v-if="!collapse" class="title">Vue3+TS</span>
     </div>
 
-    <el-menu default-active="0" :collapse="collapse" class="el-menu-vertical">
+    <el-menu default-active="39" :collapse="collapse" class="el-menu-vertical">
       <template v-for="item in userMenus" :key="item.id">
         <!-- 二级菜单 (type = 1 则还有可以展开的菜单) -->
         <template v-if="item.type === 1">
@@ -70,10 +70,11 @@ export default defineComponent({
     const handleMenuItemClick = (item: any) => {
       console.log(item.url)
       router.push({
+        // path: item.url ?? '/not-found'
         path: item.url ?? '/'
       })
     }
-    console.log(userMenus)
+    // console.log(userMenus)
 
     return { userMenus, handleMenuItemClick }
   }
